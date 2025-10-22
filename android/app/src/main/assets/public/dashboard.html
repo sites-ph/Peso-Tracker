@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesoTracker - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇵🇭</text></svg>">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">🇵🇭 PesoTracker</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="dashboard" class="card">
+            <h2>Your Current Balance</h2>
+            <h1 id="current-balance">₱0.00</h1>
+        </section>
+
+        <section id="actions">
+            <button id="btn-show-add" class="btn btn-add">
+                <span>&#43;</span> Add Money
+            </button>
+            <button id="btn-show-subtract" class="btn btn-subtract">
+                <span>&minus;</span> Spend Money
+            </button>
+            <a href="records.html" class="btn btn-neutral">
+                <span>&#128220;</span> View All Records
+            </a>
+        </section>
+
+        <section id="socials-card" class="card">
+            <h4>About the Creator</h4>
+            <p>This application was designed and built by James Darrol Nate.</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" class="social-btn linkedin">
+                    <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.25 6.5 1.75 1.75 0 016.5 8.25zM19 19h-3v-4.75c0-1.4-1.2-2.5-2.5-2.5S11 12.85 11 14.25V19h-3v-9h2.9v1.3a3.11 3.11 0 012.6-1.3c2.8 0 5 2.2 5 5v4z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/YOUR_USERNAME" target="_blank" class="social-btn github">
+                    <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297 24 5.67 18.627.297 12 .297z"/></svg>
+                    GitHub
+                </a>
+                <a href="https://YOUR_PORTFOLIO.com" target="_blank" class="social-btn portfolio">
+                    <svg role="img" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.475 2 2 6.475 2 12s4.475 10 10 10 10-4.475 10-10S17.525 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM13 11.25V9c0-.55-.45-1-1-1s-1 .45-1 1v2.25c-.41.17-.75.46-.99.82H9c-.55 0-1 .45-1 1s.45 1 1 1h2.01c.24.36.58.65.99.82V15c0 .55.45 1 1 1s1-.45 1-1v-2.25c.41-.17-.75-.46.99.82H15c.55 0 1-.45 1-1s-.45-1-1-1h-2.01c-.24-.36-.58-.65-.99-.82z"/></svg>
+                    Portfolio
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-notification" class="toast"></div>
+
+    <footer id="main-footer">
+        <p>ESTABLISHED BY JAMES DARROL NATE</p>
+    </footer>
+
+    <div id="transaction-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="btn-cancel-form">&times;</span>
+            <h3 id="modal-title">Add Money</h3>
+            <form id="transaction-form">
+                <input type="hidden" id="transaction-type">
+                <div class="form-group">
+                    <label for="name">Name (e.g., Sahod, Jollibee)</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" step="0.01" min="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment (Optional)</label>
+                    <textarea id="comment" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Transaction</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Action</h3>
+            <p id="confirmation-message">Are you sure?</p>
+            <div class="modal-buttons">
+                <button id="btn-confirm-yes" class="btn btn-primary">Yes, Confirm</button>
+                <button id="btn-confirm-no" class="btn btn-neutral">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

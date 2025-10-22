@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PesoTracker - Records</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🇵🇭</text></svg>">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo">🇵🇭 PesoTracker</div>
+            <a href="dashboard.html" class="back-link">&larr; Back to Dashboard</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="filters" class="card">
+            <h2>Transaction Records</h2>
+            <div class="filter-controls">
+                <select id="filter-month"> <option value="">All Months</option> <option value="1">Jan</option> <option value="2">Feb</option> <option value="3">Mar</option> <option value="4">Apr</option> <option value="5">May</option> <option value="6">Jun</option> <option value="7">Jul</option> <option value="8">Aug</option> <option value="9">Sep</option> <option value="10">Oct</option> <option value="11">Nov</option> <option value="12">Dec</option> </select>
+                <input type="number" id="filter-year" placeholder="Year (e.g., 2025)">
+                <button id="btn-filter" class="btn btn-primary">Search</button>
+            </div>
+            <button id="btn-export-csv" class="btn btn-neutral">Export to CSV</button>
+        </section>
+
+        <section id="records-list" class="card">
+            <div class="table-container">
+                <table>
+                    <thead> <tr> <th>Name</th> <th>Date</th> <th>Amount</th> <th>Comment</th> </tr> </thead>
+                    <tbody id="records-tbody"> <tr> <td colspan="4" class="text-center">Loading records...</td> </tr> </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-notification" class="toast"></div>
+
+    <footer id="main-footer">
+        <p>ESTABLISHED BY JAMES DARROL NATE</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
